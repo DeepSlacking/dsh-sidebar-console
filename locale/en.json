@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Sidebar console manager",
+    "description": "Long-press drag any sidebar console entry to reorder it; the order is pinned against plugin updates. A single top row shows the visible-entry count and opens the unified manager, where entries can be shown or hidden one by one or in bulk. Hidden entries collapse into a 「N hidden」 section at the bottom."
+  }
+}

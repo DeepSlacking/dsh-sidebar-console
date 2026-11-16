@@ -1,0 +1,64 @@
+{
+  "name": "dsh-sidebar-console",
+  "version": "0.1.1",
+  "description": "Left-sidebar console manager: long-press drag to reorder panel entries (order is pinned against plugin updates), one unified manager with per-item hide/show, and a collapsible hidden-items section.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "lib/*.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "dsh.plugin.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": [
+        "./cordis.patch.yml"
+      ]
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.1.0",
+    "@deepseek-ai/dsh-home-paths": ">=0.2.1-rc.3 <0.2.3"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "cordis",
+    "plugin",
+    "sidebar",
+    "console",
+    "reorder",
+    "hide"
+  ],
+  "engines": {
+    "node": ">=22.6.0",
+    "dsh": "0.2.1-rc.3 || 0.2.1-rc.4 || 0.2.1-rc.5 || 0.2.2-rc.1 || 0.2.2-rc.2 || 0.2.2-rc.3"
+  },
+  "author": "DeepSlacking",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeepSlacking/dsh-sidebar-console.git"
+  },
+  "license": "MIT"
+}

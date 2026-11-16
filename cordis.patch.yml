@@ -1,0 +1,13 @@
+# dsh-sidebar-console bundle patch.
+#
+# One pure ADDITION: a host row that serves the layout API used by the browser
+# half (order / hidden / expanded). The row carries an id no shipped entry uses,
+# and no shipped row is disabled, renamed or reconfigured here, so the patch
+# stays safe to compose with every other plugin's patch.
+#
+# All behaviour lives in the browser half (`client.js`, served through
+# `exports["./client"]`). The host row owns only the durable layout file:
+#   $DSH_HOME/storages/dsh-sidebar-console/layout.json
+- insert:
+    - id: dsh-sidebar-console
+      name: dsh-sidebar-console
