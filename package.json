@@ -19,6 +19,7 @@
     "icon.svg",
     "dsh.plugin.json",
     "README.md",
+    "README.en.md",
     "LICENSE"
   ],
   "dsh": {

@@ -1,8 +1,12 @@
 # dsh-sidebar-console · 侧栏控制台管理
 
+中文 · [English](README.en.md)
+
 DeepSeek Harness（DSH）Web 端左侧控制台（全局面板列表）管理器。装得越多、侧栏越乱的问题，用这个插件把「顺序」和「显隐」交还给你。
 
 ![侧栏控制台管理](https://img.shields.io/badge/DSH-0.2.2--rc.1-4176e6) ![license](https://img.shields.io/badge/license-MIT-green)
+
+![侧栏控制台：管理弹层与隐藏区](docs/screenshots/sidebar-console.png)
 
 ## 功能
 
@@ -79,7 +83,8 @@ dsh-sidebar-console/
 ├─ client.js           浏览器半：长按拖动、管理弹层、隐藏区、重放循环
 ├─ locale/{zh,en}.json 插件管理器显示用的标题/描述
 ├─ icon.svg            插件图标
-└─ dsh.plugin.json     插件市场元数据
+├─ dsh.plugin.json     插件市场元数据
+└─ docs/screenshots/   README 截图
 ```
 
 ## 兼容性
@@ -92,7 +97,7 @@ dsh-sidebar-console/
 
 - E2E（真实 DSH 0.2.2-rc.1 + 独立 profile + headless Edge/CDP）：`node e2e/cdp.mjs --url "<token url>" --script e2e/verify-console.mjs`
 - 覆盖：插件加载、长按拖动排序、计数变化、单项隐藏、隐藏区展开、整页刷新后的顺序/显隐/展开态持久化、批量全部显示、折叠侧栏 rail、控制台无报错。
-- 最近一次结果：**10/10 通过**（报告与截图：`.tmp/e2e/console-verify.json`、`e2e/shots/c1..c7-*.png`）。
+- 最近一次结果：**10/10 通过**。
 
 ## 已知边界
 
@@ -102,4 +107,6 @@ dsh-sidebar-console/
 
 ## 许可
 
-MIT。
+MIT License，Copyright (c) 2026 dsh-sidebar-console contributors。
+
+本插件在 MIT 许可下自由使用、修改与分发；完整条款见 [LICENSE](LICENSE)。
