@@ -1,6 +1,6 @@
 {
   "name": "dsh-sidebar-console",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Left-sidebar console manager: long-press drag to reorder panel entries (order is pinned against plugin updates), one unified manager with per-item hide/show, and a collapsible hidden-items section.",
   "type": "module",
   "main": "index.js",
