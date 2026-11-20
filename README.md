@@ -4,7 +4,7 @@
 
 DeepSeek Harness（DSH）Web 端左侧控制台（全局面板列表）管理器。装得越多、侧栏越乱的问题，用这个插件把「顺序」和「显隐」交还给你。
 
-![侧栏控制台管理](https://img.shields.io/badge/DSH-0.2.2--rc.1-4176e6) ![license](https://img.shields.io/badge/license-MIT-green)
+![侧栏控制台管理](https://img.shields.io/badge/DSH-0.2.x-4176e6) ![license](https://img.shields.io/badge/license-MIT-green)
 
 ![侧栏控制台：管理弹层与隐藏区](docs/screenshots/sidebar-console.png)
 
@@ -89,8 +89,9 @@ dsh-sidebar-console/
 
 ## 兼容性
 
-- 目标版本：DSH `0.2.1-rc.3` ~ `0.2.2-rc.3`（Web 端；桌面/浏览器一致；`0.2.2-rc.3` 为本次兼容性迁移的实测版本）。
-- 依赖的宿主结构（0.2.2-rc.3 复核）：`nav[class*=panelList]` 是侧栏根节点内的面板列表，面板行统一为 `button[class*=panelRow]`；0.2.2-rc.3 起每个面板行外面多了一层 `div[class*=panelEntry]`，本插件按「遍历 nav 的直接子节点、再在其中查找行按钮」的方式匹配，因此有/无包裹层都能工作。「更多」入口在 `[class*=moreAnchor]` 包裹层内，行按钮带 `aria-haspopup="menu"`；折叠态由祖先类名片段 `_collapsed` 表示（实际类名为 `<哈希>_collapsed`）。
+- 目标版本：DSH `>=0.2.1-rc.3 <0.3.0-0`（0.2 全系含预览版；Web 端，桌面/浏览器一致；`0.2.2-rc.5` 为本次核对的版本）。上界用 `<0.3.0-0` 是为了连 `0.3.0-rc.*` 一起挡住。
+- 版本门禁：清单用 `engines.dsh` 的**区间**声明。DSH 只要看到该字段就只按它判定、忽略 `peerDependencies`；不满足时整条插件在启动组合阶段被静默 disable（只在 stderr 留一行）。**不要**改回精确版本白名单——那样每发一版都会失效一次。
+- 依赖的宿主结构（0.2.2-rc.5 复核）：`nav[class*=panelList]` 是侧栏根节点内的面板列表，面板行统一为 `button[class*=panelRow]`；0.2.2-rc.3 起每个面板行外面多了一层 `div[class*=panelEntry]`，本插件按「遍历 nav 的直接子节点、再在其中查找行按钮」的方式匹配，因此有/无包裹层都能工作。「更多」入口在 `[class*=moreAnchor]` 包裹层内，行按钮带 `aria-haspopup="menu"`；折叠态由祖先类名片段 `_collapsed` 表示（实际类名为 `<哈希>_collapsed`）。
 - 若 DSH 大改侧栏结构，插件会静默降级（找不到 nav 就不做任何修改），不会报错或破坏界面；升级后如功能消失，先看浏览器控制台是否有 `dsh-sidebar-console: sync failed`。
 
 ## 验证

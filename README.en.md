@@ -4,7 +4,7 @@
 
 A manager for the left-sidebar console (the global panel list) of DeepSeek Harness (DSH) Web. When installing plugins turns the sidebar into a mess, this plugin hands ordering and visibility back to you.
 
-![dsh-sidebar-console](https://img.shields.io/badge/DSH-0.2.2--rc.1-4176e6) ![license](https://img.shields.io/badge/license-MIT-green)
+![dsh-sidebar-console](https://img.shields.io/badge/DSH-0.2.x-4176e6) ![license](https://img.shields.io/badge/license-MIT-green)
 
 ![The sidebar console: manager popover and hidden section](docs/screenshots/sidebar-console.png)
 
@@ -89,8 +89,9 @@ dsh-sidebar-console/
 
 ## Compatibility
 
-- Target: DSH `0.2.1-rc.3` – `0.2.2-rc.3` (Web; desktop and browser behave the same; `0.2.2-rc.3` is the version this compatibility migration was tested against).
-- Host structure it relies on (re-checked on 0.2.2-rc.3): `nav[class*=panelList]` is the panel list inside the sidebar root, and every panel row is a `button[class*=panelRow]`. Since 0.2.2-rc.3 each row sits inside an extra `div[class*=panelEntry]`; the plugin walks the nav's direct children and looks for row buttons inside them, so it works with or without that wrapper. The *More* entry lives in a `[class*=moreAnchor]` wrapper and its row button carries `aria-haspopup="menu"`. The collapsed state is marked by the ancestor class fragment `_collapsed` (the real class is `<hash>_collapsed`).
+- Target: DSH `>=0.2.1-rc.3 <0.3.0-0` (all of 0.2.x including prereleases; Web, desktop and browser behave the same; `0.2.2-rc.5` is the version this was last checked against). The `<0.3.0-0` upper bound also blocks `0.3.0-rc.*`.
+- Version gate: the manifest declares `engines.dsh` as a **range**. Once that field exists DSH judges by it alone and ignores `peerDependencies`; an unmet range makes the composition preflight silently disable the whole plugin (one line on stderr). Do **not** put back an exact-version whitelist — that breaks once per DSH release.
+- Host structure it relies on (re-checked on 0.2.2-rc.5): `nav[class*=panelList]` is the panel list inside the sidebar root, and every panel row is a `button[class*=panelRow]`. Since 0.2.2-rc.3 each row sits inside an extra `div[class*=panelEntry]`; the plugin walks the nav's direct children and looks for row buttons inside them, so it works with or without that wrapper. The *More* entry lives in a `[class*=moreAnchor]` wrapper and its row button carries `aria-haspopup="menu"`. The collapsed state is marked by the ancestor class fragment `_collapsed` (the real class is `<hash>_collapsed`).
 - If DSH ever restructures the sidebar, the plugin degrades silently (no nav, no changes) instead of throwing or breaking the UI. If a feature disappears after an upgrade, check the browser console for `dsh-sidebar-console: sync failed`.
 
 ## Verification

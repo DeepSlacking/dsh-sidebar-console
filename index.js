@@ -87,7 +87,10 @@ async function handleRoute(route, request, store) {
  */
 export function apply(ctx) {
   const store = new LayoutStore().load()
-  ctx.logger?.info?.(`sidebar-console: layout store ${store.file}${store.loadError === undefined ? '' : ` (load error: ${store.loadError})`}`)
+  // Cordis installs a LoggerService, not a logger: `ctx.logger(name)` returns the
+  // named logger. Reading `.info` straight off the service was a silent no-op.
+  const logger = typeof ctx.logger === 'function' ? ctx.logger('sidebar-console') : ctx.logger
+  logger?.info?.(`layout store ${store.file}${store.loadError === undefined ? '' : ` (load error: ${store.loadError})`}`)
   ctx.inject(['connection'], (child) => {
     child.effect(() => {
       const disposers = ROUTES.map((route) =>

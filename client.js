@@ -958,7 +958,15 @@ button[class*="panelRow"].dscm-dragging, .dscm-dragging {
 
         function openPopover() {
           if (ui.pop !== null) return
-          const pop = el('div', 'dscm-pop', { [OWN]: 'popover', role: 'dialog', 'aria-label': t('pop.title') })
+          const pop = el('div', 'dscm-pop', {
+            [OWN]: 'popover',
+            role: 'dialog',
+            'aria-label': t('pop.title'),
+            // macOS Desktop (0.2.2-rc.2+) only auto-excludes controls inside
+            // `data-window-drag` rows; this portalled overlay can reach the
+            // titlebar/sidebar drag rows, so it declares its own region.
+            'data-window-drag-exclude': '',
+          })
           const head = el('div', 'dscm-pop-head')
           const titleWrap = el('div', 'dscm-pop-titlewrap')
           const title = el('div', 'dscm-pop-title', { text: t('pop.title') })
@@ -1513,7 +1521,7 @@ button[class*="panelRow"].dscm-dragging, .dscm-dragging {
         }
 
         const debugApi = {
-          version: '0.1.0',
+          version: '0.1.4',
           getState() {
             return {
               order: [...state.order],
